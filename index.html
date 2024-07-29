@@ -8,25 +8,26 @@
         body {
             background-color: #000;
             color: #FFD700;
-            font-family: Arial, sans-serif;
+            font-family:Arial, Helvetica, sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            margin: 200px;
+            margin:20px;
         }
         .container {
             width: 80%;
             background-color: #333;
-            padding: 20px;
+            padding: 40px;
             border-radius: 10px;
         }
         h1 {
             text-align: center;
-            margin-bottom: 20px;
+            margin-bottom: 700px;
         }
         .form-group {
             margin-bottom: 15px;
+            
         }
         label {
             display: block;
@@ -53,6 +54,7 @@
             border-radius: 5px;
             margin-right: 10px;
             cursor: pointer;
+            font-size: 20px;"
         }
         .value-button:hover, .remove-button:hover {
             background-color: #FFC700;
@@ -82,86 +84,112 @@
 <body>
     <div class="container">
         <h1>Calculadora de Tunagens</h1>
-        <div class="form-group">
+        <div class="form-group" style="font-size: 30px;">
             <label for="name">Nome:</label>
             <input type="text" id="name">
         </div>
-        <div class="form-group">
+        <div class="form-group" style="font-size: 30px;">
             <label for="id">Identificação:</label>
-            <input type="text" id="id">
+            <input type="number" id="id">
         </div>
-        <div class="form-group">
+        <div class="form-group" style="font-size: 30px;">
             <label for="car">Nome do veículo:</label>
             <input type="text" id="car">
         </div>
 
-        <div id="categories">
-            <div class="category" data-category="1">
+        <div id="categories" style="font-size: 25px;">
+            <div class="category" data-category="1" >
                 <h3>Melhorias Separadas:</h3>
-                <button class="value-button" data-value="60000">Freios | R$60K</button>
-                <button class="value-button" data-value="60000">Motor | R$60K</button>
-                <button class="value-button" data-value="60000">Suspensão | R$60K</button>
-                <button class="value-button" data-value="60000">Transmissão | R$60K</button>
-                <button class="value-button" data-value="50000">Turbo | R$50K</button>
-                <button class="value-button" data-value="0">Blindagem | N/A</button>
+                <button class="value-button" data-value="60000" >Freios R$60K</button>
+                <button class="value-button" data-value="60000">Motor R$60K</button>
+                <button class="value-button" data-value="60000">Suspensão R$60K</button>
+                <button class="value-button" data-value="60000">Transmissão R$60K</button>
+                <button class="value-button" data-value="50000">Turbo R$50K</button>
+                <button class="value-button" data-value="0">Blindagem N/A</button>
                 <button class="remove-button">Remover Seleção</button>
             </div>
             <div class="category" data-category="2">
-                <h3>Modificações Extras:</h3>
-                <button class="value-button" data-value="10000">+ 1 | R$10000</button>
-                <button class="remove-button">Remover Seleção</button>
+                <h3>Modificações Estéticas :</h3>
+                <button class="value-button" data-value="5000">Pintura primária R$5K</button>
+                <button class="value-button" data-value="5000">Pintura secundária R$5K</button>
+                <button class="value-button" data-value="5000">Janelas escuras R$5K</button>
+                <button class="value-button" data-value="5000">Fumaça do Pneu R$5K</button>
+                <button class="value-button" data-value="5000">Placa R$5K</button>
+                <button class="value-button" data-value="10000">Teto  R$10K</button>
             </div>
+
+            <div class="category" data-category="2">
+                
+                <button class="value-button" data-value="5000">Buzinas R$5K</button>
+                <button class="value-button" data-value="10000">Escapamento R$10K</button>
+                <button class="value-button" data-value="10000">Aerofólio R$10K</button>
+                <button class="value-button" data-value="10000">Gaiola R$10K</button>
+                <button class="value-button" data-value="10000">Para-choque Dianteiro R$10K</button>
+                <button class="value-button" data-value="10000">Para-choque Traseiro R$10K</button>
+            </div>
+
+            <div class="category" data-category="2">
+               
+                <button class="value-button" data-value="10000">Para-lama  R$10K</button>
+                <button class="value-button" data-value="10000">Saia Lateral  R$10K</button>
+                <button class="value-button" data-value="10000">Capô R$10K</button>
+                <button class="value-button" data-value="10000">Grelha  R$10K</button>
+                <button class="value-button" data-value="10000">Livery (Adesivos)  R$10K</button>
+                <button class="value-button" data-value="10000">Extra +1 R$10.000,00</button>
+                <button class="remove-button" style="background-color: red; color: white;">Remover Seleção</button>
+            </div>
+         
             <div class="category" data-category="3">
                 <h3>Full-Tunning:</h3>
-                <button class="value-button" data-value="0">Blindagem | N/A</button>
-                <button class="value-button" data-value="290000">Sem Blindagem | R$290K</button>
-                <button class="remove-button">Remover Seleção</button>
+                <button class="value-button" data-value="0">Blindagem N/A</button>
+                <button class="value-button" data-value="290000">Sem Blindagem R$290K</button>
+                <button class="remove-button" style="background-color: red; color: white;">Remover Seleção</button>
             </div>
             <div class="category" data-category="4">
                 <h3>Reparo: </h3>
-                <button class="value-button" data-value="3000"> Reparo | R$3K</button>
-                <button class="remove-button">Remover Seleção</button>
+                <button class="value-button" data-value="3000"> Reparo R$3K</button>
+                <button class="remove-button" style="background-color: red; color: white;">Remover Seleção</button>
             </div>
             <div class="category" data-category="5">
                 <h3>Tunagem do veículo: </h3>
-                <button class="value-button" data-value="200000">Chip de Tunagem | R$200K</button>
-                <button class="value-button" data-value="130000">Escapamento | R$130K</button>
-                <button class="value-button" data-value="100000">Tipo de Tração | R$100K</button>
-                <button class="remove-button">Remover Seleção</button>
+                <button class="value-button" data-value="150000">Chip de Tunagem R$150K</button>
+                <button class="value-button" data-value="130000">Escapamento R$130K</button>
+                <button class="value-button" data-value="100000">Tipo de Tração R$100K</button>
+                <button class="remove-button" style="background-color: red; color: white;">Remover Seleção</button>
             </div>
             <div class="category" data-category="5">
                 <h3>Rodas e Cambagem: </h3>
-                <button class="value-button" data-value="30000">Rodas | R$30K</button>
-                <button class="value-button" data-value="70000">Cambagem | R$70K</button>
-                <button class="remove-button">Remover Seleção</button>
+                <button class="value-button" data-value="30000">Rodas R$30K</button>
+                <button class="value-button" data-value="60000">Cambagem R$60K</button>
+                <button class="remove-button" style="background-color: red; color: white;">Remover Seleção</button>
             </div>
             <div class="category" data-category="5">
                 <h3>Xenons: </h3>
-                <button class="value-button" data-value="15000">Completo | R$15K</button>
-                <button class="value-button" data-value="5000">Apenas a cor | R$5K</button>
-                <button class="remove-button">Remover Seleção</button>
+                <button class="value-button" data-value="15000">Completo R$15K</button>
+                <button class="value-button" data-value="5000">Apenas a cor R$5K</button>
+                <button class="remove-button" style="background-color: red; color: white;">Remover Seleção</button>
             </div>
             <div class="category" data-category="6">
                 <h3>Neon: </h3>
-                <button class="value-button" data-value="25000">Completo | R$25K</button>
-                <button class="value-button" data-value="5000">Apenas a cor | R$5K</button>
-                <button class="remove-button">Remover Seleção</button>
+                <button class="value-button" data-value="25000">Completo $25K</button>
+                <button class="value-button" data-value="5000">Apenas a cor R$5K</button>
+                <button class="remove-button" style="background-color: red; color: white;">Remover Seleção</button>
             </div>
         </div>
 
-        <div class="actions">
-            <button id="add-more">Adicionar Mais</button>
-            <button id="remove-all">Remover Tudo</button>
-            <button id="copy-info">Copiar Informações</button>
+        <div class="actions" >
+            <button id="add-more" style="background-color: rgb(255, 251, 0); font-size: 20px;" >Adicionar Mais</button>
+            <button id="remove-all" style="background-color: red; color: white; font-size: 20px;">Remover Tudo</button>
+            <button id="copy-info" style="background-color: rgb(43, 255, 0); font-size: 20px; ">Copiar Informações</button>
         </div>
 
-        <div class="total">
+        <div class="total" style="font-size: 30px;">
             <h3>Total: R$<span id="total">0</span></h3>
         </div>
 
-        <div class="selected-items">
+        <div class="selected-items" style="font-size: 30px;">
             <h3>Itens Selecionados:</h3>
-            <ul id="selected-list"></ul>
+            <ul id="selected-list" style="font-size: 30px; color: white;"></ul>
         </div>
     </div>
 
@@ -230,7 +258,7 @@
                 const name = document.getElementById('name').value;
                 const id = document.getElementById('id').value;
                 const car = document.getElementById('car').value;
-                const items = Array.from(selectedList.children).map(item => item.textContent).join(', ');
+                const items = Array.from(selectedList.children).map(item => item.textContent).join(' | ');
                 const info = `Nome: ${name}\nIdentificação: ${id}\nCarro: ${car}\nTotal: R$${total}\nItens Selecionados: ${items}`;
                 navigator.clipboard.writeText(info).then(() => {
                     alert('Informações copiadas!');
