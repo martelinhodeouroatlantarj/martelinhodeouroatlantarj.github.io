@@ -1,271 +1,228 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Martelinho de ouro - Calculadora </title>
-    <style>
-        body {
-            background-color: #000;
-            color: #FFD700;
-            font-family:Arial, Helvetica, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin:1px;
-        }
-        .container {
-            width: 80%;
-            background-color: #333;
-            padding: 40px;
-            border-radius: 10px;
-        }
-        h1 {
-            text-align: center;
-            margin-bottom: 700px;
-        }
-        .form-group {
-            margin-bottom: 15px;
-            
-        }
-        label {
-            display: block;
-            margin-bottom: 15px;
-            font-size: 30px;
-        }
-        input {
-            width: 100%;
-            padding: 8px;
-            margin-bottom: 10px;
-            border: none;
-            border-radius: 5px;
-        }
-        .category {
-            margin-bottom: 15px;
-        }
-        .category h3 {
-            margin-bottom: 10px;
-        }
-        .value-button, .remove-button {
-            background-color: #FFD700;
-            color: #000;
-            padding: 10px;
-            border: none;
-            border-radius: 5px;
-            margin-right: 10px;
-            cursor: pointer;
-            font-size: 20px;"
-        }
-        .value-button:hover, .remove-button:hover {
-            background-color: #FFC700;
-        }
-        .actions {
-            margin-top: 20px;
-            text-align: center;
-        }
-        .actions button {
-            background-color: #FFD700;
-            color: #000;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            margin-right: 10px;
-            cursor: pointer;
-        }
-        .actions button:hover {
-            background-color: #FFC700;
-        }
-        .total, .selected-items {
-            margin-top: 20px;
-            text-align: center;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Martelinho de Ouro - Calculadora</title>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Oswald', sans-serif;
+      background-color: #000;
+      color: #FFD700;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+
+      margin-top: 50px;
+    }
+    .container {
+      width: 80%;
+      max-width: 800px;
+      padding: 30px;
+      background-color: #1a1a1a;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+      text-align: left;
+      font-size: 30px;
+    }
+    .inputs input {
+    font-size:20px;
+      display: block;
+      margin: 10px auto;
+      padding: 10px;
+      border: 1px solid #FFD700;
+      background-color: #333;
+      color: #FFD700;
+      border-radius: 5px;
+      width: 90%;
+    }
+    .buttons, .category {
+      margin: 10px 0;
+    }
+    .buttons button, .category button {
+        font-size: 20px;
+      margin: 5px;
+      padding: 10px;
+      border: 1px solid #FFD700;
+      background-color: #FFD700;
+      color: #000000;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    .buttons button:hover, .category button:hover {
+      background-color: #f5db46;
+      color: #000;
+    }
+    .total {
+      font-size: 1.5em;
+      text-align: right;
+    }
+    .description {
+      text-align: left;
+      margin-top: 20px;
+      border-top: 1px solid #FFD700;
+      padding-top: 10px;
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Calculadora de Tunagens</h1>
-        <div class="form-group" style="font-size: 30px;">
-            <label for="name">Nome:</label>
-            <input type="text" id="name">
-        </div>
-        <div class="form-group" style="font-size: 30px;">
-            <label for="id">Identificação:</label>
-            <input type="number" id="id">
-        </div>
-        <div class="form-group" style="font-size: 30px;">
-            <label for="car">Nome do veículo:</label>
-            <input type="text" id="car">
-        </div>
-
-        <div id="categories" style="font-size: 25px;">
-            <div class="category" data-category="1" >
-                <h3>Melhorias Separadas:</h3>
-                <button class="value-button" data-value="60000" >Freios R$60K</button>
-                <button class="value-button" data-value="60000">Motor R$60K</button>
-                <button class="value-button" data-value="60000">Suspensão R$60K</button>
-                <button class="value-button" data-value="60000">Transmissão R$60K</button>
-                <button class="value-button" data-value="50000">Turbo R$50K</button>
-                <button class="value-button" data-value="0">Blindagem N/A</button>
-                <button class="remove-button">Remover Seleção</button>
-            </div>
-            <div class="category" data-category="2">
-                <h3>Modificações Estéticas :</h3>
-                <button class="value-button" data-value="5000">Pintura primária R$5K</button>
-                <button class="value-button" data-value="5000">Pintura secundária R$5K</button>
-                <button class="value-button" data-value="5000">Janelas escuras R$5K</button>
-                <button class="value-button" data-value="5000">Fumaça do Pneu R$5K</button>
-                <button class="value-button" data-value="5000">Placa R$5K</button>
-                <button class="value-button" data-value="10000">Teto  R$10K</button>
-            </div>
-
-            <div class="category" data-category="2">
-                
-                <button class="value-button" data-value="5000">Buzinas R$5K</button>
-                <button class="value-button" data-value="10000">Escapamento R$10K</button>
-                <button class="value-button" data-value="10000">Aerofólio R$10K</button>
-                <button class="value-button" data-value="10000">Gaiola R$10K</button>
-                <button class="value-button" data-value="10000">Para-choque Dianteiro R$10K</button>
-                <button class="value-button" data-value="10000">Para-choque Traseiro R$10K</button>
-            </div>
-
-            <div class="category" data-category="2">
-               
-                <button class="value-button" data-value="10000">Para-lama  R$10K</button>
-                <button class="value-button" data-value="10000">Saia Lateral  R$10K</button>
-                <button class="value-button" data-value="10000">Capô R$10K</button>
-                <button class="value-button" data-value="10000">Grelha  R$10K</button>
-                <button class="value-button" data-value="10000">Livery (Adesivos)  R$10K</button>
-                <button class="value-button" data-value="10000">Extra +1 R$10.000,00</button>
-                <button class="remove-button" style="background-color: red; color: white;">Remover Seleção</button>
-            </div>
-         
-            <div class="category" data-category="3">
-                <h3>Full-Tunning:</h3>
-                <button class="value-button" data-value="0">Blindagem N/A</button>
-                <button class="value-button" data-value="290000">Sem Blindagem R$290K</button>
-                <button class="remove-button" style="background-color: red; color: white;">Remover Seleção</button>
-            </div>
-            <div class="category" data-category="4">
-                <h3>Reparo: </h3>
-                <button class="value-button" data-value="3000"> Reparo R$3K</button>
-                <button class="remove-button" style="background-color: red; color: white;">Remover Seleção</button>
-            </div>
-            <div class="category" data-category="5">
-                <h3>Tunagem do veículo: </h3>
-                <button class="value-button" data-value="150000">Chip de Tunagem R$150K</button>
-                <button class="value-button" data-value="130000">Escapamento R$130K</button>
-                <button class="value-button" data-value="100000">Tipo de Tração R$100K</button>
-                <button class="remove-button" style="background-color: red; color: white;">Remover Seleção</button>
-            </div>
-            <div class="category" data-category="5">
-                <h3>Rodas e Cambagem: </h3>
-                <button class="value-button" data-value="30000">Rodas R$30K</button>
-                <button class="value-button" data-value="60000">Cambagem R$60K</button>
-                <button class="remove-button" style="background-color: red; color: white;">Remover Seleção</button>
-            </div>
-            <div class="category" data-category="5">
-                <h3>Xenons: </h3>
-                <button class="value-button" data-value="15000">Completo R$15K</button>
-                <button class="value-button" data-value="5000">Apenas a cor R$5K</button>
-                <button class="remove-button" style="background-color: red; color: white;">Remover Seleção</button>
-            </div>
-            <div class="category" data-category="6">
-                <h3>Neon: </h3>
-                <button class="value-button" data-value="25000">Completo $25K</button>
-                <button class="value-button" data-value="5000">Apenas a cor R$5K</button>
-                <button class="remove-button" style="background-color: red; color: white;">Remover Seleção</button>
-            </div>
-        </div>
-
-        <div class="actions" >
-            <button id="add-more" style="background-color: rgb(255, 251, 0); font-size: 20px;" >Adicionar Mais</button>
-            <button id="remove-all" style="background-color: red; color: white; font-size: 20px;">Remover Tudo</button>
-            <button id="copy-info" style="background-color: rgb(43, 255, 0); font-size: 20px; ">Copiar Informações</button>
-        </div>
-
-        <div class="total" style="font-size: 30px;">
-            <h3>Total: R$<span id="total">0</span></h3>
-        </div>
-
-        <div class="selected-items" style="font-size: 30px;">
-            <h3>Itens Selecionados:</h3>
-            <ul id="selected-list" style="font-size: 30px; color: white;"></ul>
-        </div>
+  <div class="container">
+    <div class="inputs">
+      <input type="text" id="name" placeholder="Nome">
+      <input type="number" id="identification" placeholder="Identificação">
+      <input type="text" id="vehicle" placeholder="Nome do Veículo">
     </div>
+    <div class="buttons">
+      <div class="category">
+        <h3>Melhorias Separadas:</h3>
+        <button onclick="addItem('Categoria1', 'Freios Nv.1', 20000)">Freios Nv.1 | R$20K</button>
+        <button onclick="addItem('Categoria1', 'Freios Nv.2', 30000)">Freios Nv.2 | R$30K</button>
+        <button onclick="addItem('Categoria1', 'Freios Nv.3', 40000)">Freios Nv.3 | R$40K</button>
+        <button onclick="addItem('Categoria1', 'Motor Nv.1', 20000)">Motor Nv.1 | R$20K</button>
+        <button onclick="addItem('Categoria1', 'Motor Nv.2', 30000)">Motor Nv.2 | R$30K</button>
+        <button onclick="addItem('Categoria1', 'Motor Nv.3', 40000)">Motor Nv.3 | R$40K</button>
+        <button onclick="addItem('Categoria1', 'Motor Nv.4', 50000)">Motor Nv.4 | R$50K</button>
+        <button onclick="addItem('Categoria1', 'Suspensão Nv.1', 10000)">Suspensão Nv.1 | R$10K</button>
+        <button onclick="addItem('Categoria1', 'Suspensão Nv.2', 20000)">Suspensão Nv.2 | R$20K</button>
+        <button onclick="addItem('Categoria1', 'Suspensão Nv.3', 30000)">Suspensão Nv.3 | R$30K</button>
+        <button onclick="addItem('Categoria1', 'Suspensão Nv.4', 40000)">Suspensão Nv.4 | R$40K</button>
+        <button onclick="addItem('Categoria1', 'Transmissão Nv.1', 20000)">Transmissão Nv.1 | R$20K</button>
+        <button onclick="addItem('Categoria1', 'Transmissão Nv.2', 30000)">Transmissão Nv.2 | R$30K</button>
+        <button onclick="addItem('Categoria1', 'Transmissão Nv.3', 40000)">Transmissão Nv.3 | R$40K</button>
+        <button onclick="addItem('Categoria1', 'Turbo', 40000)">Turbo | R$40K</button>
+        <button onclick="removeCategory('Categoria1')" style="background-color: red; color: white; border: 1px solid red;">Remover Tudo</button>
+      </div>
+      <div class="category">
+        <h3>Full-Tuning:</h3>
+        <button onclick="addItem('Categoria3', 'Full-Tuning S/ Blindagem', 210000)">Sem Blindagem | R$210K</button>
+        <button onclick="addItem('Categoria3', 'Full-Tuning C/ Blindagem', 0)">Com Blindagem | N/A </button>
+        <button onclick="removeCategory('Categoria3')" style="background-color: red; color: white; border: 1px solid red;">Remover Tudo  </button>
+      </div>
+      <div class="category">
+        <h3>Modificações Estéticas:</h3>
+        <button onclick="addItem('Categoria2', 'Pintura Primária', 5000)">Pintura Primária | R$5K</button>
+        <button onclick="addItem('Categoria2', 'Pintura Secundária', 5000)">Pintura Secundária | R$5K</button>
+        <button onclick="addItem('Categoria2', 'Janelas', 5000)">Janelas | R$5K</button>
+        <button onclick="addItem('Categoria2', 'Fumaça do Pneu', 5000)">Fumaça do Pneu | R$5K</button>
+        <button onclick="addItem('Categoria2', 'Placa', 5000)">Placa | R$5K</button>
+        <button onclick="addItem('Categoria2', 'Buzinas', 5000)">Buzinas | R$5K</button>
+        <button onclick="addItem('Categoria2', 'Capô', 10000)">Capô | R$10K</button>
+        <button onclick="addItem('Categoria2', 'Teto', 10000)">Teto | R$10K</button>
+        <button onclick="addItem('Categoria2', 'Escapamento', 10000)">Escapamento | R$10K</button>
+        <button onclick="addItem('Categoria2', 'Para-choque Dianteiro ', 10000)">Para-choque Dianteiro | R$10K</button>
+        <button onclick="addItem('Categoria2', 'Para-choque Traseiro', 10000)">Para-choque Traseiro | R$10K</button>
+        <button onclick="addItem('Categoria2', 'Para-lama', 10000)">Para-lama | R$10K</button>
+        <button onclick="addItem('Categoria2', 'Saia Lateral', 10000)">Saia Lateral | R$10K</button>
+        <button onclick="addItem('Categoria2', 'Grelha', 10000)">Grelha | R$10K</button>
+        <button onclick="addItem('Categoria2', 'Gaiola', 10000)">Gaiola | R$10K</button>
+        <button onclick="addItem('Categoria2', 'Livery', 10000)">Livery (Adesivos) | R$10K</button>
+        <button onclick="addItem('Categoria2', 'Extra +1', 10000)">Extra +1 | R$10K</button>
+        <button onclick="removeCategory('Categoria2')" style="background-color: red; color: white; border: 1px solid red;">Remover Tudo</button>
+      </div>
+      <div class="category">
+        <h3>Reparo:</h3>
+        <button onclick="addItem('Categoria4', 'Reparo', 1000)">Reparo | R$1K</button>
+        <button onclick="removeCategory('Categoria4')" style="background-color: red; color: white; border: 1px solid red;">Remover Tudo</button>
+      </div>
+      <div class="category">
+        <h3>Tunagem do veículo:</h3>
+        <button onclick="addItem('Categoria5', 'Chip de Tunagem', 120000)">Chip de Tunagem | R$120K</button>
+        <button onclick="addItem('Categoria5', 'Escapamento (Popcorn)', 100000)">Escapamento (Popcorn) | R$100K</button>
+        <button onclick="addItem('Categoria5', 'Tipo de Tração', 100000)">Tipo de Tração | R$100K</button>
+        <button onclick="removeCategory('Categoria5')" style="background-color: red; color: white; border: 1px solid red;">Remover Tudo</button>
+      </div>
+      <div class="category">
+        <h3>Rodas e Cambagem:</h3>
+        <button onclick="addItem('Categoria6', 'Rodas', 20000)">Rodas | R$20K</button>
+        <button onclick="addItem('Categoria6', 'Ajutes de Rodas', 60000)">Ajuste de Rodas | R$60K</button>
+        <button onclick="removeCategory('Categoria6')" style="background-color: red; color: white; border: 1px solid red;">Remover Tudo</button>
+      </div>
+      <div class="category">
+        <h3>Xenons:</h3>
+        <button onclick="addItem('Categoria7', 'Xenon Completo', 15000)">Completo | R$15K</button>
+        <button onclick="addItem('Categoria7', 'Cor do Xenon', 5000)">Apenas Cor | R$5K</button>
+        <button onclick="removeCategory('Categoria7')" style="background-color: red; color: white; border: 1px solid red;">Remover Tudo</button>
+      </div>
+      <div class="category">
+        <h3>Neon:</h3>
+        <button onclick="addItem('Categoria8', 'Neon Completo', 15000)">Completo | R$15K</button>
+        <button onclick="addItem('Categoria8', 'Cor do Neon', 5000)">Apenas Cor | R$5K</button>
+        <button onclick="removeCategory('Categoria8')" style="background-color: red; color: white; border: 1px solid red;">Remover Tudo</button>
+      </div>
+      <button onclick="removeAll()" style="background-color: red; color: white; border: 1px solid red;">Remover Tudo</button>
+      <button onclick="copyToClipboard()" style="background-color: green; color: white; border: 1px solid green;">Copiar Informações</button>
+    </div>
+    <div class="total">
+      Total: R$<span id="totalAmount">0</span>
+    </div>
+    <div class="description" id="description">
+      <!-- Descrição dos itens adicionados -->
+    </div>
+  </div>
+  <script>
+    let total = 0;
+    let items = [];
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const categories = document.getElementById('categories');
-            const totalElement = document.getElementById('total');
-            const selectedList = document.getElementById('selected-list');
-            const addMoreButton = document.getElementById('add-more');
-            const removeAllButton = document.getElementById('remove-all');
-            const copyInfoButton = document.getElementById('copy-info');
+    function addItem(category, name, value) {
+      total += value;
+      items.push({ category, name, value });
+      updateUI();
+    }
 
-            let total = 0;
+    function removeItem(index) {
+      total -= items[index].value;
+      items.splice(index, 1);
+      updateUI();
+    }
 
-            categories.addEventListener('click', (event) => {
-                if (event.target.classList.contains('value-button')) {
-                    const value = parseInt(event.target.getAttribute('data-value'));
-                    const text = event.target.textContent;
-                    total += value;
-                    totalElement.textContent = total;
+    function removeCategory(category) {
+      items = items.filter(item => {
+        if (item.category === category) {
+          total -= item.value;
+          return false;
+        }
+        return true;
+      });
+      updateUI();
+    }
 
-                    const listItem = document.createElement('li');
-                    listItem.textContent = text;
-                    selectedList.appendChild(listItem);
-                } else if (event.target.classList.contains('remove-button')) {
-                    const buttons = event.target.parentNode.querySelectorAll('.value-button');
-                    buttons.forEach(button => {
-                        if (button.disabled) {
-                            const value = parseInt(button.getAttribute('data-value'));
-                            total -= value;
-                            button.disabled = false;
-                        }
-                    });
-                    totalElement.textContent = total;
+    function removeAll() {
+      total = 0;
+      items = [];
+      updateUI();
+    }
 
-                    while (selectedList.firstChild) {
-                        selectedList.removeChild(selectedList.firstChild);
-                    }
-                }
-            });
+    function updateUI() {
+      document.getElementById('totalAmount').innerText = total;
+      const descriptionDiv = document.getElementById('description');
+      descriptionDiv.innerHTML = '';
+      items.forEach((item, index) => {
+        descriptionDiv.innerHTML += `
+          <div>
+            ${item.name} (R$${item.value})
+            <button onclick="removeItem(${index})">Remover</button>
+          </div>
+        `;
+      });
+    }
 
-            addMoreButton.addEventListener('click', () => {
-                const extraCategory = document.createElement('div');
-                extraCategory.className = 'category';
-                extraCategory.innerHTML = `
-                    <h3>Categoria Extra</h3>
-                    <button class="value-button" data-value="100">R$100</button>
-                    <button class="value-button" data-value="200">R$200</button>
-                    <button class="remove-button">Remover Seleção</button>
-                `;
-                categories.appendChild(extraCategory);
-            });
-
-            removeAllButton.addEventListener('click', () => {
-                total = 0;
-                totalElement.textContent = total;
-                const buttons = categories.querySelectorAll('.value-button');
-                buttons.forEach(button => button.disabled = false);
-
-                while (selectedList.firstChild) {
-                    selectedList.removeChild(selectedList.firstChild);
-                }
-            });
-
-            copyInfoButton.addEventListener('click', () => {
-                const name = document.getElementById('name').value;
-                const id = document.getElementById('id').value;
-                const car = document.getElementById('car').value;
-                const items = Array.from(selectedList.children).map(item => item.textContent).join(' | ');
-                const info = `Nome: ${name}\nIdentificação: ${id}\nCarro: ${car}\nTotal: R$${total}\nItens Selecionados: ${items}`;
-                navigator.clipboard.writeText(info).then(() => {
-                    alert('Informações copiadas!');
-                });
-            });
-        });
-    </script>
+    function copyToClipboard() {
+      let text = `Nome: ${document.getElementById('name').value}\n` +
+                 `Identificação: ${document.getElementById('identification').value}\n` +
+                 `Nome do Veículo: ${document.getElementById('vehicle').value}\n\n` +
+                 `Itens Selecionados:\n`;
+      items.forEach(item => {
+        text += `${item.name} - R$${item.value}\n`;
+      });
+      text += `\nTotal: R$${total}`;
+      
+      navigator.clipboard.writeText(text)
+        .then(() => alert('Informações copiadas!'))
+        .catch(err => console.error('Erro ao copiar texto: ', err));
+    }
+  </script>
 </body>
 </html>
